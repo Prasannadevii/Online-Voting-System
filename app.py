@@ -34,7 +34,8 @@ def create_app(overrides=None) -> Flask:
 
     logger.setup_logging(app.config["LOG_DIR"])
     if not os.path.exists(app.config["DATABASE_PATH"]):
-        init_db(app.config["DATABASE_PATH"])
+        from backend.database.seed import seed_database
+        seed_database(app.config["DATABASE_PATH"], app.config["SECRET_KEY"], app.config["HASH_ITERATIONS"])
     MONITOR.set_server(app.config["HOST"], app.config["PORT"])
     request_manager.init_app(app)
 

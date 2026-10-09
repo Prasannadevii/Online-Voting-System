@@ -54,7 +54,7 @@ def _resolve(path_str: str) -> str:
 class Config:
     SECRET_KEY = _get_secret_key()
     DATABASE_PATH = _resolve(os.environ.get("DATABASE_PATH", "database/voting.db"))
-    HOST = os.environ.get("HOST", "127.0.0.1")
+    HOST = os.environ.get("HOST", "0.0.0.0")
     PORT = _get_int("PORT", 5000)
     DEBUG = os.environ.get("DEBUG", "True").lower() in ("1", "true", "yes")
     LOG_DIR = str(BASE_DIR / "logs")
