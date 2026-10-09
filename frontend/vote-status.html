@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Vote Receipt | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="auto2" data-require="" data-page="vote-status">
+<main id="main">
+
+<div class="page-head"><div><h1>My vote receipt</h1><p>Proof that your ballot was recorded, without revealing who you voted for.</p></div></div>
+<div class="stack"><div id="status-box"><div class="skeleton" style="height:120px"></div></div>
+<div class="card"><h3>Verify a receipt</h3><p class="muted small">Anyone can check that a transaction ID exists in the ledger. The result never shows the choice or the voter.</p>
+<form id="verify-form" class="inline-fields"><div><label for="tx">Transaction ID</label><input id="tx" placeholder="VOTE-2026-00006"></div><div style="flex:none"><button class="btn btn-primary" type="submit">Verify</button></div></form><div id="verify-out" style="margin-top:1rem"></div></div></div>
+</main>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/voter.js"></script>
+</body></html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="admin" data-require="admin" data-page="admin-dashboard">
+<main id="main">
+
+<div class="page-head"><div><h1>Election control center</h1><p>Live figures from the running server. Refreshes every 3 seconds.</p></div><div id="dash-status" class="btn-row"></div></div>
+<div class="grid g4" id="tiles"></div>
+<div class="grid g2" style="margin-top:1rem"><div class="card"><div class="card-head"><h3>Live election results</h3><div class="seg" id="res-toggle"><button aria-pressed="true" data-t="bar">Bar</button><button aria-pressed="false" data-t="doughnut">Doughnut</button></div></div><div class="chart-box"><canvas id="c-results" role="img" aria-label="Live results chart"></canvas></div></div>
+<div class="card"><div class="card-head"><h3>Network performance</h3><span class="small muted">avg response time (ms), last 90 s</span></div><div class="chart-box"><canvas id="c-latency" role="img" aria-label="Response time chart"></canvas></div></div></div>
+<div class="grid g2" style="margin-top:1rem"><div class="card"><div class="card-head"><h3>Request status</h3><span class="small muted">since server start</span></div><div class="chart-box short"><canvas id="c-status" role="img" aria-label="Request status chart"></canvas></div></div>
+<div class="card"><div class="card-head"><h3>Concurrency status</h3></div><div class="result-grid" id="conc"></div><h3 style="margin-top:1.1rem">Rate limiting</h3><div class="result-grid" id="rl"></div></div></div>
+<div class="grid g2" style="margin-top:1rem"><div class="card"><div class="card-head"><h3>System events</h3><a class="small" href="audit-logs.html">Audit logs</a></div><div class="table-wrap"><table><thead><tr><th>Time</th><th>Type</th><th>Severity</th><th>Message</th></tr></thead><tbody id="events"></tbody></table></div></div>
+<div class="card"><div class="card-head"><h3>Ledger integrity</h3></div><div id="ledger"></div><div class="btn-row" style="margin-top:1rem"><a class="btn btn-sm" href="concurrency-lab.html">Concurrency Lab</a><a class="btn btn-sm" href="demonstrations.html">Demonstrations</a></div></div></div>
+</main>
+<script src="/static/vendor/chart.umd.js"></script>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/admin.js"></script>
+</body></html>

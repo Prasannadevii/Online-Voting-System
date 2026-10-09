@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Network Monitor | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="admin" data-require="admin" data-page="network-monitor">
+<main id="main">
+
+<div class="page-head"><div><h1>Network monitor</h1><p>Statistics computed from the HTTP requests this server actually handled. Dashboard polling is excluded so it does not skew the numbers.</p></div><div id="srv-status"></div></div>
+<div class="grid g4" id="net-tiles"></div>
+<div class="grid g3" style="margin-top:1rem">
+<div class="card"><h3>Requests per second</h3><div class="chart-box short"><canvas id="n-rps"></canvas></div></div>
+<div class="card"><h3>Response time (ms)</h3><div class="chart-box short"><canvas id="n-ms"></canvas></div></div>
+<div class="card"><h3>Successful vs failed</h3><div class="chart-box short"><canvas id="n-sf"></canvas></div></div>
+<div class="card"><h3>HTTP status codes</h3><div class="chart-box short"><canvas id="n-codes"></canvas></div></div>
+<div class="card"><h3>In-flight connections</h3><div class="chart-box short"><canvas id="n-conn"></canvas></div></div>
+<div class="card"><h3>Error rate (%)</h3><div class="chart-box short"><canvas id="n-err"></canvas></div></div></div>
+<div class="grid g2" style="margin-top:1rem">
+<div class="card"><div class="card-head"><h3>Network lab</h3><span class="sim-tag">REAL LOOPBACK REQUESTS</span></div>
+<p class="muted small">The server sends real HTTP requests to its own <code>/api/sim/ping</code> endpoint with an artificial server-side delay. A client timeout shorter than the delay produces a genuine timeout. Voting is never delayed.</p>
+<div class="lab-row"><strong>Simulated delay</strong><div class="seg" id="delay-seg"><button aria-pressed="true" data-v="0">0 ms</button><button aria-pressed="false" data-v="100">100 ms</button><button aria-pressed="false" data-v="500">500 ms</button><button aria-pressed="false" data-v="1000">1000 ms</button><button aria-pressed="false" data-v="3000">3000 ms</button></div></div>
+<div class="lab-row"><strong>Client timeout</strong><div class="seg" id="to-seg"><button aria-pressed="false" data-v="500">500 ms</button><button aria-pressed="true" data-v="2000">2000 ms</button><button aria-pressed="false" data-v="5000">5000 ms</button></div></div>
+<div class="btn-row" style="margin:.8rem 0"><button class="btn btn-primary" id="run-net">Run network test</button><button class="btn" id="run-burst">Traffic burst (100 requests)</button></div><div id="net-out"></div></div>
+<div class="card"><h3>Rate limiting &amp; performance</h3><div class="result-grid" id="perf"></div><h3 style="margin-top:1.1rem">Recent requests</h3><div class="table-wrap"><table><thead><tr><th>Time</th><th>Request</th><th>Status</th><th>ms</th><th>Request ID</th></tr></thead><tbody id="recent"></tbody></table></div></div></div>
+</main>
+<script src="/static/vendor/chart.umd.js"></script>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/monitoring.js"></script>
+</body></html>

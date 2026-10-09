@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About NetVote Platform | System Architecture & Technologies</title>
+<meta name="description" content="Technical architecture, engineering concepts, and technologies implemented in NetVote.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230284c7'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/dashboard.css">
+<link rel="stylesheet" href="/static/css/voting.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
+
+<style>
+.tech-badge {
+  display: inline-block;
+  background: var(--blue-l);
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 99px;
+  border: 1px solid var(--sky-border);
+  margin-bottom: 0.5rem;
+}
+.hero-sky {
+  background: linear-gradient(135deg, #0f172a 0%, #0369a1 45%, #0284c7 100%);
+  color: #fff;
+  padding: 3rem 1.4rem 3.4rem;
+  border-radius: var(--r);
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(2,132,199,.2);
+  border: 1px solid rgba(56,189,248,.3);
+}
+.hero-sky h1 {
+  color: #fff;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  margin-bottom: 0.8rem;
+}
+.hero-sky p {
+  color: #e0f2fe;
+  font-size: 1.05rem;
+  max-width: 65ch;
+  line-height: 1.6;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 2.2rem 0 1.2rem;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sky-border), transparent);
+}
+.tech-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.3rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, border-color 0.2s;
+}
+.tech-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sky);
+}
+.tech-card h3 {
+  color: var(--blue-d);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+.tech-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.concept-tag {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #0369a1;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.3rem;
+}
+.flow-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: var(--r);
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+}
+.flow-step {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #0f172a;
+}
+.flow-step.active {
+  background: #0284c7;
+  color: #fff;
+  border-color: #0284c7;
+}
+.flow-arrow {
+  color: #0284c7;
+  font-weight: 700;
+}
+</style>
+</head>
+<body data-layout="public" data-require="" data-page="about-website">
+<main id="main">
+
+<div class="hero-sky">
+  <span class="tech-badge">Production Architecture & Core Engineering</span>
+  <h1>About the NetVote Platform</h1>
+  <p>NetVote is a secure, high-concurrency, and network-aware electronic voting system. It combines atomic transaction guarantees, cryptographic ballot integrity, and real-time network telemetry into a dependable client-server architecture.</p>
+  <div class="btn-row" style="margin-top:1.4rem">
+    <a class="btn btn-primary" href="index.html">← Back to Home</a>
+    <a class="btn" href="aboutme.html" style="background:rgba(255,255,255,.15);border-color:#bae6fd;color:#fff">About the Author</a>
+    <a class="btn" href="results.html" style="background:rgba(255,255,255,.15);border-color:#bae6fd;color:#fff">Live Results</a>
+    <a class="btn" href="login.html" style="background:#fff;color:#0369a1;font-weight:600">Voter Portal</a>
+  </div>
+</div>
+
+<h2 class="section-title">End-to-End Voting Workflow</h2>
+<div class="flow-box">
+  <div class="flow-step">1. Voter Browser (HTTPS/Fetch)</div>
+  <div class="flow-arrow">➔</div>
+  <div class="flow-step">2. Rate Limiter & Request ID</div>
+  <div class="flow-arrow">➔</div>
+  <div class="flow-step active">3. Mutex Critical Section (vote_lock)</div>
+  <div class="flow-arrow">➔</div>
+  <div class="flow-step">4. BEGIN IMMEDIATE (SQLite WAL)</div>
+  <div class="flow-arrow">➔</div>
+  <div class="flow-step">5. Hash Chain Ledger (SHA-256)</div>
+  <div class="flow-arrow">➔</div>
+  <div class="flow-step active">6. COMMIT & Signed Receipt</div>
+</div>
+
+<h2 class="section-title">Technologies Implemented</h2>
+<div class="grid g3">
+  <div class="tech-card">
+    <span class="concept-tag">Backend Server</span>
+    <h3>Python 3 & Flask</h3>
+    <p>Powers the core REST API with Werkzeug multi-threaded server architecture. Handles concurrent client connections independently with dedicated execution contexts.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Storage & ACID</span>
+    <h3>SQLite in WAL Mode</h3>
+    <p>Configured with Write-Ahead Logging (WAL) to enable non-blocking concurrent readers while a single writer commits. Fully enforces ACID guarantees with atomic rollback protection.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Operating Systems</span>
+    <h3>Mutex & Concurrency Controls</h3>
+    <p>Guards critical ballot submission paths with <code>InstrumentedLock</code> to completely prevent race conditions, lost updates, and duplicate votes under heavy traffic bursts.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Computer Networks</span>
+    <h3>TCP Message Framing</h3>
+    <p>Implements low-level socket protocol (<code>socket()</code>, <code>bind()</code>, <code>listen()</code>, <code>accept()</code>, <code>send()</code>, <code>recv()</code>) with 4-byte length prefixes to eliminate TCP byte-stream fragmentation.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Security & Cryptography</span>
+    <h3>SHA-256 Hash Chaining</h3>
+    <p>Ballots are linked in a cryptographic blockchain-style hash chain. Any retroactive database tampering immediately breaks the chain and flags an alert on verification.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Voter Privacy</span>
+    <h3>HMAC Voter Pseudonymity</h3>
+    <p>Decouples voter personal identification from candidate choices using salted HMAC keys. Preserves strict ballot secrecy while guaranteeing one voter cannot vote twice.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Network Defense</span>
+    <h3>Sliding-Window Rate Limiting</h3>
+    <p>Application-layer sliding window algorithm tracks request volume per IP address, stopping brute-force and credential-stuffing attacks with HTTP 429 status codes.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Distributed Reliability</span>
+    <h3>Idempotency & Request Tracing</h3>
+    <p>Every HTTP interaction carries a unique correlation ID (<code>REQ-YYYY-XXXXXXXX</code>). Replayed vote submissions return original receipts without creating duplicate ballots.</p>
+  </div>
+
+  <div class="tech-card">
+    <span class="concept-tag">Telemetry & Frontend</span>
+    <h3>Vanilla JS & Chart.js</h3>
+    <p>Zero external runtime CDN dependencies. Bundles modern responsive UI with live latency percentiles (P50/P95/P99), requests-per-second, and in-flight connection tracking.</p>
+  </div>
+</div>
+
+<h2 class="section-title">Operating Systems Engineering in Practice</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3 style="color:var(--blue-d)">Multi-Threading & Race Condition Elimination</h3>
+    <p>When hundreds of voters cast ballots simultaneously, unsynchronized threads create classic <em>check-then-act</em> race conditions where two threads read <code>has_voted = 0</code> at the same time and record duplicate votes.</p>
+    <p>NetVote enforces defense-in-depth:</p>
+    <ul style="color:var(--muted);font-size:0.9rem;padding-left:1.2rem;line-height:1.6">
+      <li><strong>Mutex Critical Section:</strong> An in-process lock allows only one thread inside the vote processing block at a time.</li>
+      <li><strong>Immediate Transaction:</strong> SQLite <code>BEGIN IMMEDIATE</code> acquires the database write lock up-front.</li>
+      <li><strong>Relational Constraints:</strong> A <code>UNIQUE(voter_ref)</code> database constraint physically rejects duplicates even if application code fails.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--blue-d)">Deadlock, Starvation & Producer-Consumer Architecture</h3>
+    <p>Robust distributed systems must prevent resource locking hazards:</p>
+    <ul style="color:var(--muted);font-size:0.9rem;padding-left:1.2rem;line-height:1.6">
+      <li><strong>Deadlock Prevention:</strong> Circular wait is broken using strict lock acquisition ordering and bounded timeouts.</li>
+      <li><strong>Starvation Mitigation:</strong> Lock acquisition limits request waits to 10 seconds, failing gracefully with HTTP 503 instead of hanging voters.</li>
+      <li><strong>Producer-Consumer Logger:</strong> Voter request threads push audit log events onto a bounded in-memory queue. A separate background worker thread batches and flushes them to disk, preventing slow disk writes from stalling voters.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="section-title">Computer Networks Architecture</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3 style="color:var(--blue-d)">Client-Server Protocol & Semantic Status Codes</h3>
+    <p>The system follows the REST architectural pattern over HTTP/1.1 and TCP, returning strict, standard HTTP status codes:</p>
+    <ul style="color:var(--muted);font-size:0.9rem;padding-left:1.2rem;line-height:1.6">
+      <li><code>200 OK / 201 Created</code> — Successful data retrieval or ballot generation.</li>
+      <li><code>400 Bad Request</code> — Invalid parameters, malformed JSON, or missing fields.</li>
+      <li><code>401 Unauthorized / 403 Forbidden</code> — Unauthenticated requests or unauthorized administrative access.</li>
+      <li><code>409 Conflict</code> — Duplicate voting attempts or invalid candidate state transitions.</li>
+      <li><code>429 Too Many Requests</code> — Sliding-window rate limit exceeded.</li>
+      <li><code>500 / 503 Unavailable</code> — Server database locks or timeouts, with zero leaked stack traces.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--blue-d)">TCP Message Framing & Stream Boundary Management</h3>
+    <p>Because TCP is a continuous byte stream without message boundaries, two calls to <code>send()</code> can easily coalesce into a single <code>recv()</code>, or one message can arrive fragmented across packets.</p>
+    <p>NetVote implements an application-layer framing standard:</p>
+    <div style="background:#0f172a;color:#7dd3fc;padding:0.8rem 1rem;border-radius:8px;font-family:var(--mono);font-size:0.85rem;margin:0.8rem 0">
+      [ 4-byte big-endian length N ][ N bytes UTF-8 payload ]
+    </div>
+    <p style="color:var(--muted);font-size:0.88rem">The <code>recv_exact()</code> reader loops continuously until the exact specified frame length is assembled, guaranteeing zero data truncation or framing overlap.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:2rem;background:#f0f9ff;border:1px solid #bae6fd;text-align:center;padding:2rem">
+  <h2 style="color:var(--blue-d);margin-bottom:0.5rem">Meet the Engineer Behind NetVote</h2>
+  <p style="color:var(--muted);max-width:55ch;margin:0 auto 1.2rem">Learn more about the system architecture, background, and technical journey of the author.</p>
+  <a class="btn btn-primary btn-lg" href="aboutme.html">View Author Profile (Prasannadevi S) →</a>
+</div>
+
+</main>
+<script src="/static/js/core.js"></script>
+</body>
+</html>

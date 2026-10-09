@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Election | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="admin" data-require="admin" data-page="election">
+<main id="main">
+
+<div class="page-head"><div><h1>Election management</h1><p>Lifecycle: NOT STARTED, ACTIVE, PAUSED, ENDED. Every transition is audited.</p></div></div>
+<div class="grid g2"><div class="card"><div id="el-state"><div class="skeleton" style="height:120px"></div></div><div class="btn-row" id="el-actions" style="margin-top:1rem"></div></div>
+<div class="card"><h3>Create a new election</h3><p class="muted small">Allowed when no election is running. <strong>This resets all ballots</strong> (single-election design) and cannot be undone.</p>
+<form id="create-form" class="stack"><div class="field"><label for="el-name">Election name</label><input id="el-name" required placeholder="Student Council Election 2027 (fictional)"></div><button class="btn btn-danger" type="submit">Create election...</button></form></div></div>
+</main>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/admin.js"></script>
+</body></html>

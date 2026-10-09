@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concurrency Lab | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="admin" data-require="admin" data-page="concurrency-lab">
+<main id="main">
+
+<div class="page-head"><div><h1>Concurrency &amp; race condition laboratory</h1><p>Real threads, real SQLite transactions, isolated demo database.</p></div><span class="sim-tag">EDUCATIONAL SIMULATION</span></div>
+<div class="card lab-controls"><h3>Concurrency test lab</h3>
+<div class="lab-row"><strong>Test type</strong><div class="seg" id="seg-mode"><button aria-pressed="true" data-v="same_voter">Same voter</button><button aria-pressed="false" data-v="multiple_voters">Multiple voters</button></div></div>
+<div class="lab-row"><strong>Concurrent requests</strong><div class="seg" id="seg-n"><button aria-pressed="false" data-v="10">10</button><button aria-pressed="false" data-v="25">25</button><button aria-pressed="false" data-v="50">50</button><button aria-pressed="true" data-v="100">100</button><button aria-pressed="false" data-v="500">500</button></div></div>
+<div class="lab-row"><strong>Synchronization</strong><div class="seg" id="seg-sync"><button aria-pressed="true" data-v="1">ENABLED</button><button aria-pressed="false" data-v="0" class="unsafe">DISABLED (demo only)</button></div></div>
+<div class="lab-row"><strong>Executor</strong><div class="seg" id="seg-exec"><button aria-pressed="true" data-v="threads">One thread per request</button><button aria-pressed="false" data-v="pool">Thread pool (16 workers)</button></div></div>
+<div class="btn-row"><button class="btn btn-primary btn-lg" id="start-test">START CONCURRENCY TEST</button><span id="test-spin" class="hidden"><span class="spinner"></span> running...</span></div>
+<p class="hint">Disabling synchronization only affects the throw-away demo database. The real election always uses the lock, the transaction and the UNIQUE constraint.</p></div>
+<div id="lab-out" class="stack" style="margin-top:1rem"></div>
+<div class="card" style="margin-top:1rem"><div class="card-head"><h3>Race condition visualization</h3><span class="sim-tag">REAL EVENT TRACE</span></div>
+<p class="muted small">Two threads vote with the same voter ID. The events below are the real ordered trace recorded while they ran.</p>
+<div class="btn-row"><button class="btn" id="race-unsafe">Run UNSAFE scenario</button><button class="btn btn-primary" id="race-safe">Run SAFE scenario</button></div><div id="race-out" style="margin-top:1rem"></div></div>
+</main>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/concurrency.js"></script>
+</body></html>

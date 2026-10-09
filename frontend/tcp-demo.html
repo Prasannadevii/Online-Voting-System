@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TCP Demo | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="admin" data-require="admin" data-page="tcp-demo">
+<main id="main">
+
+<div class="page-head"><div><h1>Raw TCP demonstration</h1><p>An educational socket-level protocol with length-prefixed framing. It is not used by the web app for authentication.</p></div><span class="sim-tag">EDUCATIONAL SIMULATION</span></div>
+<div class="grid g2"><div class="card"><h3>Protocol</h3><div class="term"><span class="c">CLIENT</span> HELLO|CLIENT001     <span class="s">SERVER</span> WELCOME|CLIENT001
+<span class="c">CLIENT</span> AUTH|D0001|demo-pass <span class="s">SERVER</span> AUTH_OK
+<span class="c">CLIENT</span> VOTE|1|REQ-...       <span class="s">SERVER</span> VOTE_ACK|TX
+<span class="c">CLIENT</span> QUIT                <span class="s">SERVER</span> BYE
+
+frame = [4-byte big-endian length][UTF-8 payload]</div>
+<p class="small muted" style="margin-top:.8rem">Run standalone: <code>python -m backend.networking.tcp_demo_server --port 9000</code> then <code>python -m backend.networking.tcp_demo_client --port 9000</code>.</p></div>
+<div class="card"><h3>Run it</h3><p class="muted small">Starts a real TCP server on 127.0.0.1 (random free port), connects a client and exchanges framed messages. Then runs the framing experiment.</p><button class="btn btn-primary" id="run-tcp">Run TCP session</button></div></div>
+<div id="tcp-out" class="stack" style="margin-top:1rem"></div>
+</main>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/concurrency.js"></script>
+</body></html>

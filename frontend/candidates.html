@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Candidates | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="admin" data-require="admin" data-page="candidates">
+<main id="main">
+
+<div class="page-head"><div><h1>Candidates</h1><p>All candidates are fictional.</p></div><button class="btn btn-primary" id="add-btn">Add candidate</button></div>
+<div id="lock-note"></div>
+<div class="card hidden" id="cand-form-card" style="margin-bottom:1rem"><h3 id="cf-title">Add candidate</h3><form id="cand-form" novalidate>
+<div class="inline-fields"><div><label for="cf-name">Name</label><input id="cf-name" required></div><div><label for="cf-party">Party</label><input id="cf-party" required></div><div style="flex:0 0 90px"><label for="cf-symbol">Symbol</label><input id="cf-symbol" maxlength="4" value="*"></div><div style="flex:0 0 90px"><label for="cf-color">Colour</label><input id="cf-color" type="color" value="#2456e6" style="padding:.2em;height:2.5em"></div></div>
+<div class="field" style="margin-top:.8rem"><label for="cf-desc">Description</label><input id="cf-desc" maxlength="300"></div><div id="cf-err" class="field-error" role="alert"></div>
+<div class="btn-row"><button class="btn btn-primary" type="submit">Save</button><button class="btn" type="button" id="cf-cancel">Cancel</button></div></form></div>
+<div class="table-wrap"><table><thead><tr><th>Symbol</th><th>Name</th><th>Party</th><th>Description</th><th>Votes</th><th></th></tr></thead><tbody id="cbody"></tbody></table></div>
+</main>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/admin.js"></script>
+</body></html>

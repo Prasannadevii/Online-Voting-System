@@ -1,0 +1,13 @@
+@media (max-width:860px){
+  .hero-in{grid-template-columns:1fr}.hero{padding:2rem 1.2rem}
+  .lanes{grid-template-columns:1fr}
+  h1{font-size:1.65rem}
+  .content{padding:1rem .9rem 2rem}
+  .topbar{padding:.5rem .8rem}
+  .page-head{align-items:flex-start}
+}
+@media (max-width:520px){
+  .grid.g2,.grid.g3{grid-template-columns:1fr}.metric .v{font-size:1.45rem}
+  .topnav nav{margin-left:0}.lab-row>strong{min-width:100%}
+  .modal{padding:1.1rem}
+}

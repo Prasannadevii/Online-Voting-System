@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>System Health | NetVote</title><meta name="description" content="NetVote - academic Computer Networks and Operating Systems voting demonstration">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232456e6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="admin" data-require="admin" data-page="system-health">
+<main id="main">
+
+<div class="page-head"><div><h1>System health</h1><p>Component checks run on every refresh (every 3 seconds).</p></div><div id="overall"></div></div>
+<div class="grid g2"><div class="card"><h3>Components</h3><div id="comps"></div></div><div class="card"><h3>System</h3><div class="result-grid" id="sys"></div><div id="lasts" style="margin-top:1rem"></div></div></div>
+<div class="grid g3" style="margin-top:1rem"><div class="card"><h3>Process CPU (%)</h3><div class="chart-box short"><canvas id="h-cpu"></canvas></div></div><div class="card"><h3>Memory (MB)</h3><div class="chart-box short"><canvas id="h-mem"></canvas></div></div><div class="card"><h3>Active threads</h3><div class="chart-box short"><canvas id="h-thr"></canvas></div></div></div>
+<div class="card" style="margin-top:1rem"><div class="card-head"><h3>Ledger verification</h3><button class="btn btn-primary btn-sm" id="verify-btn">Verify hash chain now</button></div><div id="verify-out" class="muted small">Recomputes every vote hash and cross-checks tallies against the ledger.</div></div>
+</main>
+<script src="/static/vendor/chart.umd.js"></script>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/monitoring.js"></script>
+</body></html>

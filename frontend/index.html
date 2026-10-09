@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NetVote | Secure, Concurrent & Network-Aware Online Voting</title><meta name="description" content="NetVote - Enterprise-grade secure electronic voting platform powered by atomic transactions and cryptographic hash verification.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230284c7'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/style.css"><link rel="stylesheet" href="/static/css/dashboard.css"><link rel="stylesheet" href="/static/css/voting.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head><body data-layout="public" data-require="" data-page="index">
+<main id="main">
+
+<section class="hero"><div class="hero-in">
+ <div><h1>One Voter. One Ballot. Counted Exactly Once.</h1>
+ <p>NetVote provides enterprise-grade electronic voting with atomic transaction guarantees, real-time concurrency controls, cryptographic ballot integrity, and high-performance network telemetry.</p>
+ <div class="btn-row" style="margin-top:1.6rem">
+   <a class="btn btn-primary btn-lg" href="login.html">Voter Login</a>
+   <a class="btn btn-lg" href="register.html">Register</a>
+   <a class="btn btn-lg" href="results.html">Live Results</a>
+   <a class="btn btn-lg" href="about-website.html">About Platform</a>
+ </div></div>
+ <aside class="ledger" aria-label="Live election ledger"><h3><span id="h-name">Loading election...</span><span id="h-status"></span></h3>
+  <div class="stats"><div><b id="h-reg">-</b><small>registered voters</small></div><div><b id="h-votes">-</b><small>ballots cast</small></div><div><b id="h-turn">-</b><small>voter turnout</small></div></div>
+  <div class="small" style="color:#bae6fd;margin-bottom:.3rem;font-weight:500">Live Tamper-Evident Ledger Feed</div><div id="h-tail"></div></aside></div></section>
+
+<section class="stack"><h2>Platform Architecture & Security Pillars</h2><div class="features">
+ <div class="card feature"><h3>Atomic Transactions</h3><p>Every vote executes as an atomic SQLite transaction: record ballot, flag voter status, increment tally, and generate audit trail in a single isolated commit.</p></div>
+ <div class="card feature"><h3>Concurrency & Race Prevention</h3><p>Instrumented mutex critical sections and unique database constraints eliminate double-voting and lost updates under peak traffic.</p></div>
+ <div class="card feature"><h3>Idempotent Retry Guarantee</h3><p>Network dropped midway? The client safely retries with the original Request ID and receives the confirmed receipt without duplicate billing.</p></div>
+ <div class="card feature"><h3>Cryptographic Hash Ledger</h3><p>Each cast ballot cryptographically seals against the preceding ballot using SHA-256 hash chains, providing mathematically verifiable tamper evidence.</p></div>
+ <div class="card feature"><h3>Live Telemetry & Diagnostics</h3><p>Real-time metrics track request throughput (RPS), in-flight TCP connections, and response latency percentiles (P50, P95, P99).</p></div>
+ <div class="card feature"><h3>Message-Framed Protocol</h3><p>Underlying raw TCP module features 4-byte big-endian framing to guarantee exact stream boundary assembly and zero packet merging.</p></div></div>
+
+ <div class="notice n-info" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:#f0f9ff;border-color:#bae6fd">
+   <div><strong>Engineered with Integrity:</strong> Protected by PBKDF2-SHA256 password hashing, sliding-window rate limiting, and HMAC ballot pseudonymity.</div>
+   <div style="display:flex;gap:0.8rem">
+     <a class="btn btn-sm btn-primary" href="about-website.html">Architecture & Tech Stack →</a>
+     <a class="btn btn-sm" href="aboutme.html" style="background:#fff;border-color:#bae6fd;color:#0369a1">About Author →</a>
+   </div>
+ </div>
+</section>
+</main>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/voter.js"></script>
+</body></html>

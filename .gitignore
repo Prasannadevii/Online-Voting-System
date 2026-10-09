@@ -1,2 +1,9 @@
-
+venv/
+__pycache__/
 *.pyc
+.env
+instance/secret.key
+database/*.db
+database/*.db-wal
+database/*.db-shm
+logs/*.log*

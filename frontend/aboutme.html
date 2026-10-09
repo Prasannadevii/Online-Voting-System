@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About the Author | NetVote</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230284c7'/%3E%3C/svg%3E">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif}
+body{
+background:linear-gradient(135deg,#0f172a 0%,#0369a1 45%,#0284c7 100%);
+min-height:100vh;
+color:#fff;
+}
+nav{
+position:sticky;
+top:0;
+background:rgba(15,23,42,.92);
+padding:16px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(56,189,248,.25);
+z-index:100;
+}
+nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+nav h2{color:#38bdf8;font-size:1.35rem;font-weight:700}
+nav .nav-links{display:flex;gap:12px;align-items:center}
+nav a.btn-link{
+text-decoration:none;
+color:#e0f2fe;
+padding:8px 16px;
+border:1px solid rgba(56,189,248,.4);
+border-radius:8px;
+font-size:0.9rem;
+transition:.2s;
+}
+nav a.btn-link:hover{background:rgba(56,189,248,.15);border-color:#38bdf8;color:#fff}
+nav a.btn-primary{background:#0284c7;border-color:#38bdf8;color:#fff;font-weight:600}
+nav a.btn-primary:hover{background:#0369a1}
+.container{max-width:1100px;margin:auto;padding:40px 25px}
+.profile{text-align:center;margin-top:10px}
+.profile img{
+width:170px;
+height:170px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #38bdf8;
+box-shadow:0 0 35px rgba(56,189,248,.45);
+background:#0f172a;
+}
+.profile h1{font-size:42px;margin-top:20px;letter-spacing:-0.5px}
+.role{
+display:inline-block;
+margin-top:12px;
+padding:8px 22px;
+border-radius:30px;
+background:#0284c7;
+font-weight:600;
+font-size:0.95rem;
+box-shadow:0 4px 15px rgba(2,132,199,.35);
+}
+.college{margin-top:15px;color:#bae6fd;font-size:18px}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+margin-top:45px;
+}
+.card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+padding:25px;
+border-radius:18px;
+backdrop-filter:blur(14px);
+transition:.35s;
+}
+.card:hover{transform:translateY(-6px);border-color:#38bdf8;box-shadow:0 12px 30px rgba(2,132,199,.25)}
+.card h3{margin-bottom:15px;color:#7dd3fc;font-size:1.15rem}
+.info{margin:12px 0}
+.label{font-size:13px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px}
+.value{font-size:17px;font-weight:600;color:#f0f9ff}
+.skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
+.tag{
+padding:8px 14px;
+border-radius:30px;
+background:#0284c7;
+font-size:13.5px;
+font-weight:500;
+border:1px solid rgba(56,189,248,.3);
+}
+.tech{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+.tech div{
+background:#0f172a;
+border:1px solid rgba(56,189,248,.2);
+padding:12px;
+border-radius:10px;
+text-align:center;
+font-weight:500;
+color:#e0f2fe;
+}
+footer{
+margin-top:50px;
+padding:30px;
+text-align:center;
+color:#bae6fd;
+border-top:1px solid rgba(255,255,255,.12);
+}
+button{
+margin-top:18px;
+padding:12px 24px;
+border:none;
+border-radius:10px;
+background:#0284c7;
+color:white;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 4px 15px rgba(2,132,199,.35);
+transition:.2s;
+}
+button:hover{background:#0369a1;transform:translateY(-2px)}
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:200;
+}
+.modal-box{
+background:#0f172a;
+border:1px solid #38bdf8;
+max-width:650px;
+padding:32px;
+border-radius:18px;
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+.modal-box h2{color:#38bdf8;margin-bottom:15px}
+.close{float:right;font-size:28px;cursor:pointer;color:#94a3b8;line-height:1}
+.close:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<nav>
+<a class="brand" href="index.html">
+<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="7" fill="#38bdf8"/><rect x="8" y="14" width="16" height="11" rx="2" fill="#0f172a"/><rect x="12" y="17" width="8" height="2" rx="1" fill="#38bdf8"/><path d="M13 9.5l2.2 2.2L20 7" fill="none" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<h2>NetVote</h2>
+</a>
+<div class="nav-links">
+<a class="btn-link" href="index.html">← Home</a>
+<a class="btn-link" href="about-website.html">About Platform</a>
+<a class="btn-link btn-primary" href="login.html">Voter Portal</a>
+</div>
+</nav>
+
+<div class="container">
+
+<div class="profile">
+<img src="Prasanna_ai.jpeg" alt="Prasannadevi S" onerror="this.src='/static/Prasanna_ai.jpeg'">
+<h1>Prasannadevi S</h1>
+<div class="role">Systems & Backend Platform Engineer</div>
+<p class="college">Vellore Institute of Technology (VIT), Vellore</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Developer Information</h3>
+<div class="info">
+<div class="label">Name</div>
+<div class="value">Prasannadevi S</div>
+</div>
+<div class="info">
+<div class="label">Specialization</div>
+<div class="value">Backend Architecture & Concurrency Systems</div>
+</div>
+<div class="info">
+<div class="label">Institution</div>
+<div class="value">Vellore Institute of Technology (VIT)</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Contact</h3>
+<div class="info">
+<div class="label">Phone</div>
+<div class="value">+91 90805 20380</div>
+</div>
+<div class="info">
+<div class="label">Email</div>
+<div class="value">prasannadevi.selvakumar@gmail.com</div>
+</div>
+<div class="info">
+<div class="label">Platform</div>
+<div class="value">NetVote Online Electronic Voting</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Core Technical Skills</h3>
+<div class="skills">
+<span class="tag">Python 3</span>
+<span class="tag">Flask</span>
+<span class="tag">Concurrency & Mutex</span>
+<span class="tag">SQLite3 WAL</span>
+<span class="tag">ACID Transactions</span>
+<span class="tag">TCP Sockets & Framing</span>
+<span class="tag">PBKDF2 & SHA-256</span>
+<span class="tag">Rate Limiting</span>
+<span class="tag">RESTful APIs</span>
+<span class="tag">JavaScript (ES6+)</span>
+</div>
+</div>
+
+<div class="card">
+<h3>Technologies Implemented</h3>
+<div class="tech">
+<div>Python 3 / Flask</div>
+<div>SQLite (WAL)</div>
+<div>Raw TCP Sockets</div>
+<div>PBKDF2-SHA256</div>
+<div>Mutex Critical Section</div>
+<div>Sliding Window Limiter</div>
+<div>Chart.js Telemetry</div>
+<div>Git & GitHub</div>
+</div>
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:40px">
+<button onclick="openModal()">About My Journey</button>
+</div>
+
+</div>
+
+<footer>
+<h3>Designed & Engineered By Prasannadevi S</h3>
+<p>Systems & Backend Platform Engineer • Vellore Institute of Technology (VIT), Vellore</p>
+</footer>
+
+<div class="modal" id="modal">
+<div class="modal-box">
+<span class="close" onclick="closeModal()">×</span>
+<h2>Professional Profile</h2>
+<p style="line-height:1.8;color:#e2e8f0;margin-top:10px">
+Prasannadevi S is a software engineer from Vellore Institute of Technology (VIT), Vellore. She designed and engineered the NetVote electronic voting platform as a high-concurrency, network-resilient client-server system. Her core engineering focus encompasses multithreaded concurrency controls, atomic SQLite transactions in WAL mode, cryptographic ballot integrity (HMAC pseudonyms and SHA-256 hash chains), application-layer rate limiting, and low-level TCP socket message framing.
+</p>
+</div>
+</div>
+
+<script>
+function openModal(){
+document.getElementById('modal').style.display='flex';
+}
+function closeModal(){
+document.getElementById('modal').style.display='none';
+}
+window.onclick=function(e){
+if(e.target.id==='modal') closeModal();
+}
+</script>
+
+</body>
+</html>
